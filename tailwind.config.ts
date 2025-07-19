@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -22,6 +21,7 @@ export default {
 			fontFamily: {
 				'inter': ['Inter', 'sans-serif'],
 				'lora': ['Lora', 'serif'],
+				'arabic': ['Amiri', 'Scheherazade New', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -80,7 +80,8 @@ export default {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				'4xl': '2rem',
 			},
 			borderWidth: {
 				'3': '3px',
@@ -166,6 +167,14 @@ export default {
 					'100%': {
 						transform: 'translateX(100%)'
 					}
+				},
+				'spin-slow': {
+					'0%': {
+						transform: 'rotate(0deg)'
+					},
+					'100%': {
+						transform: 'rotate(360deg)'
+					}
 				}
 			},
 			animation: {
@@ -177,7 +186,8 @@ export default {
 				'float': 'float 8s ease-in-out infinite',
 				'bounce-gentle': 'bounce-gentle 3s infinite',
 				'pulse-slow': 'pulse-slow 6s ease-in-out infinite',
-				'shimmer': 'shimmer 2s ease-in-out infinite'
+				'shimmer': 'shimmer 2s ease-in-out infinite',
+				'spin-slow': 'spin-slow 8s linear infinite'
 			}
 		}
 	},

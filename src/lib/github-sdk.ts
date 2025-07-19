@@ -200,12 +200,24 @@ class UniversalSDK {
       this.notifySubscribers(collection, data);
       return data;
     } catch (e) {
-      if ((e as Error).message.includes("Not Found")) {
-        // Auto-create empty collection if not found
+      const errorMessage = (e as Error).message;
+      if (errorMessage.includes("Not Found") || errorMessage.includes("This repository is empty")) {
+        // Auto-create empty collection if not found or repo is empty
         const emptyData: T[] = [];
-        await this.save(collection, emptyData);
-        this.cache[collection] = { data: emptyData, etag: undefined, sha: undefined };
-        return emptyData;
+        try {
+          await this.request(`${this.basePath}/${collection}.json`, "PUT", {
+            message: `Initialize ${collection} collection`,
+            content: btoa(JSON.stringify(emptyData, null, 2)),
+            branch: this.branch,
+          });
+          this.cache[collection] = { data: emptyData, etag: undefined, sha: undefined };
+          return emptyData;
+        } catch (createError) {
+          console.error(`Failed to create collection ${collection}:`, createError);
+          // Return empty array as fallback
+          this.cache[collection] = { data: emptyData, etag: undefined, sha: undefined };
+          return emptyData;
+        }
       }
       throw e;
     }
