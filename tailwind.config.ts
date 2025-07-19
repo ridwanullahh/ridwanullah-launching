@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -84,6 +85,9 @@ export default {
 			borderWidth: {
 				'3': '3px',
 			},
+			spacing: {
+				'18': '4.5rem',
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -104,7 +108,7 @@ export default {
 				'fade-in-up': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(20px)'
+						transform: 'translateY(30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -114,7 +118,7 @@ export default {
 				'fade-in-down': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(-20px)'
+						transform: 'translateY(-30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -131,10 +135,10 @@ export default {
 				},
 				'float': {
 					'0%, 100%': {
-						transform: 'translateY(0px)'
+						transform: 'translateY(0px) rotate(0deg)'
 					},
 					'50%': {
-						transform: 'translateY(-10px)'
+						transform: 'translateY(-20px) rotate(5deg)'
 					}
 				},
 				'bounce-gentle': {
@@ -143,28 +147,37 @@ export default {
 						animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
 					},
 					'50%': {
-						transform: 'translateY(-5px)',
+						transform: 'translateY(-8px)',
 						animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
 					}
 				},
 				'pulse-slow': {
 					'0%, 100%': {
-						opacity: '0.3'
+						opacity: '0.4'
 					},
 					'50%': {
 						opacity: '0.1'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(100%)'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in-up': 'fade-in-up 0.6s ease-out',
-				'fade-in-down': 'fade-in-down 0.6s ease-out',
+				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'fade-in-down': 'fade-in-down 0.8s ease-out',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-				'float': 'float 6s ease-in-out infinite',
-				'bounce-gentle': 'bounce-gentle 2s infinite',
-				'pulse-slow': 'pulse-slow 4s ease-in-out infinite'
+				'float': 'float 8s ease-in-out infinite',
+				'bounce-gentle': 'bounce-gentle 3s infinite',
+				'pulse-slow': 'pulse-slow 6s ease-in-out infinite',
+				'shimmer': 'shimmer 2s ease-in-out infinite'
 			}
 		}
 	},
