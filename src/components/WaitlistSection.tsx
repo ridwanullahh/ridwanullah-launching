@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { CheckCircle, Mail, Users, ArrowRight, Sparkles, Bell, Gift } from 'lucide-react';
+import { CheckCircle, Mail, Users, ArrowRight, Sparkles, Bell, Gift, BookOpen } from 'lucide-react';
 import { AnimatedButton } from './ui/animated-button';
 import waitlistService from '../services/waitlistService';
 
@@ -45,40 +45,46 @@ const WaitlistSection = () => {
 
   if (isSubmitted) {
     return (
-      <div className="max-w-3xl mx-auto animate-fade-in-up">
-        <div className="relative bg-gradient-to-br from-minted-glow via-minted-glow/60 to-ridwan-green/10 rounded-4xl p-12 lg:p-16 text-center shadow-2xl shadow-ridwan-green/10 overflow-hidden">
-          {/* Success animation background */}
+      <div id="waitlist-section" className="max-w-4xl mx-auto animate-fade-in-up">
+        <div className="relative bg-gradient-to-br from-minted-glow/60 via-minted-glow/40 to-ridwan-green/5 rounded-4xl p-16 lg:p-20 text-center shadow-2xl shadow-ridwan-green/10 overflow-hidden border border-ridwan-green/10">
+          {/* Enhanced success animation background */}
           <div className="absolute inset-0 bg-gradient-to-r from-ridwan-green/5 via-transparent to-ridwan-green/5 animate-pulse"></div>
           
-          {/* Floating success elements */}
-          <div className="absolute top-8 right-8 w-6 h-6 bg-ridwan-green/20 rounded-full animate-bounce"></div>
-          <div className="absolute bottom-8 left-8 w-4 h-4 bg-digital-gold/30 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
+          {/* Enhanced floating success elements */}
+          <div className="absolute top-12 right-12 w-8 h-8 bg-ridwan-green/15 rounded-full animate-bounce"></div>
+          <div className="absolute bottom-12 left-12 w-6 h-6 bg-digital-gold/20 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-ridwan-green/10 rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
           
           <div className="relative z-10">
-            {/* Success icon */}
-            <div className="w-24 h-24 bg-ridwan-green rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-ridwan-green/30 animate-bounce-gentle">
-              <CheckCircle className="w-12 h-12 text-pure-white" />
+            {/* Enhanced success icon */}
+            <div className="w-32 h-32 bg-gradient-to-br from-ridwan-green to-ridwan-green/90 rounded-full flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-ridwan-green/30 animate-bounce-gentle border-4 border-ridwan-green/20">
+              <CheckCircle className="w-16 h-16 text-pure-white" />
             </div>
             
-            {/* Success message */}
-            <h3 className="font-inter font-bold text-3xl lg:text-4xl text-midnight-slate mb-4">
+            {/* Enhanced success message */}
+            <h3 className="font-inter font-black text-4xl lg:text-5xl text-midnight-slate mb-6">
               بارك الله فيك!
             </h3>
-            <p className="font-lora text-xl lg:text-2xl text-midnight-slate/85 mb-8">
+            <p className="font-lora text-2xl lg:text-3xl text-midnight-slate/90 mb-4 font-medium">
+              You're now part of something extraordinary!
+            </p>
+            <p className="font-lora text-xl lg:text-2xl text-midnight-slate/75 mb-12">
               You'll be among the first to experience our platform, In'sha'Allah.
             </p>
             
-            {/* Benefits preview */}
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {/* Enhanced benefits preview */}
+            <div className="grid md:grid-cols-3 gap-8 mt-16">
               {[
-                { icon: Bell, text: 'First Access', desc: 'Be the first to explore' },
-                { icon: Gift, text: 'Exclusive Content', desc: 'Special launch materials' },
-                { icon: Users, text: 'VIP Community', desc: 'Connect with early adopters' },
+                { icon: Bell, title: 'First Access', desc: 'Be the first to explore our platform', color: 'ridwan-green' },
+                { icon: Gift, title: 'Exclusive Content', desc: 'Special launch materials and resources', color: 'digital-gold' },
+                { icon: BookOpen, title: 'Priority Support', desc: 'Get dedicated assistance when we launch', color: 'ridwan-green' },
               ].map((benefit, index) => (
-                <div key={index} className="bg-pure-white/80 rounded-2xl p-6 shadow-lg">
-                  <benefit.icon className="w-8 h-8 text-ridwan-green mx-auto mb-3" />
-                  <h4 className="font-inter font-semibold text-midnight-slate mb-1">{benefit.text}</h4>
-                  <p className="text-sm text-midnight-slate/70">{benefit.desc}</p>
+                <div key={index} className="bg-pure-white/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-ridwan-green/10 hover:border-ridwan-green/20 transition-all duration-500 hover:-translate-y-2 group">
+                  <div className={`w-16 h-16 bg-gradient-to-br from-${benefit.color} to-${benefit.color}/80 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <benefit.icon className="w-8 h-8 text-pure-white" />
+                  </div>
+                  <h4 className="font-inter font-bold text-xl text-midnight-slate mb-2">{benefit.title}</h4>
+                  <p className="text-base text-midnight-slate/70 leading-relaxed">{benefit.desc}</p>
                 </div>
               ))}
             </div>
@@ -89,68 +95,68 @@ const WaitlistSection = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+    <div id="waitlist-section" className="max-w-5xl mx-auto animate-fade-in-up" style={{animationDelay: '0.6s'}}>
       <div 
-        className="relative bg-pure-white/95 backdrop-blur-2xl border border-ridwan-green/10 rounded-4xl shadow-2xl shadow-ridwan-green/5 overflow-hidden"
+        className="relative bg-pure-white/98 backdrop-blur-3xl border border-ridwan-green/8 rounded-4xl shadow-2xl shadow-ridwan-green/5 overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Dynamic background effects */}
-        <div className={`absolute inset-0 bg-gradient-to-br from-minted-glow/30 via-transparent to-digital-gold/10 transition-opacity duration-700 ${isHovered ? 'opacity-100' : 'opacity-50'}`}></div>
-        <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-bl from-ridwan-green/10 to-transparent rounded-full blur-2xl"></div>
-        <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-gradient-to-tr from-digital-gold/15 to-transparent rounded-full blur-xl"></div>
+        {/* Enhanced dynamic background effects */}
+        <div className={`absolute inset-0 bg-gradient-to-br from-minted-glow/20 via-transparent to-digital-gold/8 transition-opacity duration-1000 ${isHovered ? 'opacity-100' : 'opacity-60'}`}></div>
+        <div className="absolute -top-16 -right-16 w-64 h-64 bg-gradient-to-bl from-ridwan-green/8 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-gradient-to-tr from-digital-gold/12 to-transparent rounded-full blur-2xl"></div>
 
-        <div className="relative z-10 p-12 lg:p-16">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-6 text-ridwan-green/80">
-              <Sparkles className="w-5 h-5" />
-              <span className="font-inter text-sm font-semibold tracking-wide uppercase">Early Access</span>
-              <Sparkles className="w-5 h-5" />
+        <div className="relative z-10 p-16 lg:p-20">
+          {/* Enhanced header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-8 text-ridwan-green/90">
+              <Sparkles className="w-6 h-6" />
+              <span className="font-inter text-lg font-bold tracking-wider uppercase">Early Access</span>
+              <Sparkles className="w-6 h-6" />
             </div>
             
-            <h3 className="font-inter font-bold text-3xl lg:text-4xl xl:text-5xl text-midnight-slate mb-4">
+            <h3 className="font-inter font-black text-4xl lg:text-5xl xl:text-6xl text-midnight-slate mb-6 leading-tight">
               Be the First to Know
             </h3>
-            <p className="font-lora text-xl lg:text-2xl text-midnight-slate/80 max-w-2xl mx-auto">
+            <p className="font-lora text-2xl lg:text-3xl text-midnight-slate/85 max-w-4xl mx-auto leading-relaxed font-medium">
               Join our exclusive early access community and be notified when we launch, In'sha'Allah.
             </p>
           </div>
 
-          {/* Social proof */}
+          {/* Enhanced social proof */}
           {waitlistCount > 0 && (
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-minted-glow/70 to-ridwan-green/10 text-ridwan-green font-inter font-semibold px-6 py-3 rounded-full border border-ridwan-green/20 shadow-lg">
-                <Users className="w-5 h-5" />
-                <span>{waitlistCount.toLocaleString()} visionaries have joined</span>
-                <div className="w-2 h-2 bg-ridwan-green rounded-full animate-pulse"></div>
+            <div className="flex justify-center mb-12">
+              <div className="inline-flex items-center gap-4 bg-gradient-to-r from-minted-glow/80 to-ridwan-green/8 text-ridwan-green font-inter font-bold px-8 py-4 rounded-full border border-ridwan-green/20 shadow-xl backdrop-blur-xl">
+                <Users className="w-6 h-6" />
+                <span className="text-lg">{waitlistCount.toLocaleString()} visionaries have joined</span>
+                <div className="w-3 h-3 bg-ridwan-green rounded-full animate-pulse"></div>
               </div>
             </div>
           )}
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-            <div className="relative group mb-8">
-              {/* Input field */}
+          {/* Enhanced form */}
+          <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
+            <div className="relative group mb-10">
+              {/* Enhanced input field */}
               <div className="relative">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className="w-full px-8 py-6 lg:px-10 lg:py-7 bg-gradient-to-r from-minted-glow/40 to-minted-glow/20 border-2 border-ridwan-green/15 rounded-2xl text-midnight-slate placeholder-midnight-slate/50 font-inter text-lg lg:text-xl focus:outline-none focus:ring-4 focus:ring-ridwan-green/20 focus:border-ridwan-green transition-all duration-300 group-hover:border-ridwan-green/25 shadow-inner"
+                  className="w-full px-10 py-8 lg:px-12 lg:py-9 bg-gradient-to-r from-minted-glow/50 to-minted-glow/30 border-2 border-ridwan-green/15 rounded-3xl text-midnight-slate placeholder-midnight-slate/50 font-inter text-xl lg:text-2xl focus:outline-none focus:ring-4 focus:ring-ridwan-green/20 focus:border-ridwan-green transition-all duration-500 group-hover:border-ridwan-green/30 shadow-inner backdrop-blur-xl"
                   required
                 />
-                <Mail className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-ridwan-green/60 group-hover:text-ridwan-green transition-colors duration-300" />
+                <Mail className="absolute right-8 top-1/2 transform -translate-y-1/2 w-7 h-7 text-ridwan-green/60 group-hover:text-ridwan-green transition-colors duration-300" />
               </div>
               
-              {/* Input glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-ridwan-green/10 to-digital-gold/10 rounded-2xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10"></div>
+              {/* Enhanced input glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-ridwan-green/8 to-digital-gold/8 rounded-3xl blur-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 -z-10"></div>
             </div>
             
             {message && (
-              <div className="text-center mb-6">
-                <p className="text-red-500 font-inter bg-red-50 px-4 py-2 rounded-lg inline-block">{message}</p>
+              <div className="text-center mb-8">
+                <p className="text-red-500 font-inter font-medium bg-red-50 px-6 py-3 rounded-2xl inline-block border border-red-100">{message}</p>
               </div>
             )}
             
@@ -161,44 +167,44 @@ const WaitlistSection = () => {
                 disabled={isLoading}
                 isLoading={isLoading}
                 size="lg"
-                className="w-full max-w-md font-bold text-xl py-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-ridwan-green/25"
+                className="w-full max-w-lg font-black text-2xl py-8 transform hover:scale-105 transition-all duration-500 shadow-2xl hover:shadow-ridwan-green/25 rounded-3xl"
               >
                 {isLoading ? (
                   <>
-                    <div className="w-6 h-6 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-7 h-7 border-3 border-current border-t-transparent rounded-full animate-spin"></div>
                     <span>Joining the revolution...</span>
                   </>
                 ) : (
                   <>
-                    <Bell className="w-6 h-6" />
+                    <Bell className="w-7 h-7" />
                     <span>Notify Me When We Launch</span>
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform duration-300" />
                   </>
                 )}
               </AnimatedButton>
             </div>
           </form>
           
-          {/* Benefits grid */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-ridwan-green/10">
+          {/* Enhanced benefits grid */}
+          <div className="grid md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-ridwan-green/10">
             {[
-              { icon: Sparkles, title: 'Exclusive Access', desc: 'Be among the first to explore our platform' },
-              { icon: Gift, title: 'Launch Bonuses', desc: 'Special perks for early supporters' },
-              { icon: Users, title: 'VIP Community', desc: 'Connect with like-minded innovators' },
+              { icon: Sparkles, title: 'Exclusive Access', desc: 'Be among the first to explore our platform', color: 'ridwan-green' },
+              { icon: Gift, title: 'Launch Bonuses', desc: 'Special perks and content for early supporters', color: 'digital-gold' },
+              { icon: BookOpen, title: 'Priority Support', desc: 'Get dedicated assistance and guidance', color: 'ridwan-green' },
             ].map((benefit, index) => (
               <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-br from-ridwan-green/10 to-digital-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <benefit.icon className="w-8 h-8 text-ridwan-green" />
+                <div className={`w-20 h-20 bg-gradient-to-br from-${benefit.color}/10 to-${benefit.color}/5 border border-${benefit.color}/20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg backdrop-blur-xl`}>
+                  <benefit.icon className={`w-10 h-10 text-${benefit.color}`} />
                 </div>
-                <h4 className="font-inter font-semibold text-midnight-slate mb-2">{benefit.title}</h4>
-                <p className="text-sm text-midnight-slate/70">{benefit.desc}</p>
+                <h4 className="font-inter font-bold text-lg text-midnight-slate mb-3">{benefit.title}</h4>
+                <p className="text-base text-midnight-slate/70 leading-relaxed">{benefit.desc}</p>
               </div>
             ))}
           </div>
           
-          {/* Privacy note */}
-          <p className="text-center text-xs text-midnight-slate/40 mt-8 font-inter leading-relaxed max-w-lg mx-auto">
-            We respect your privacy. No spam, only meaningful updates about our launch and exclusive content.
+          {/* Enhanced privacy note */}
+          <p className="text-center text-sm text-midnight-slate/50 mt-12 font-inter leading-relaxed max-w-2xl mx-auto">
+            We respect your privacy and follow Islamic principles of trust (Amanah). No spam, only meaningful updates about our launch and exclusive content.
             {!waitlistService.isConfigured() && (
               <>
                 <br />
