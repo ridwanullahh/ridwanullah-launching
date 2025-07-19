@@ -114,7 +114,7 @@ const Index = () => {
                 </div>
                 
                 <p className="text-midnight-slate/60 font-inter mb-4">
-                  © 2024 Ridwanullah Group. Built with love and guided by Islamic principles.
+                  © 1447AH Ridwanullah Group. Built with love and guided by Islamic principles.
                 </p>
                 
                 <p className="text-midnight-slate/50 font-inter text-sm">
