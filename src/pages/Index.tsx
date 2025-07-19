@@ -228,7 +228,10 @@ const Index = () => {
                 <p className="text-xs text-midnight-slate/40 mt-6 font-inter leading-relaxed">
                   We respect your privacy. No spam, only meaningful updates. 
                   {!waitlistService.isConfigured() && (
-                    <br /><span className="text-orange-500">Note: Waitlist functionality requires configuration.</span>
+                    <>
+                      <br />
+                      <span className="text-orange-500">Note: Waitlist functionality requires configuration.</span>
+                    </>
                   )}
                 </p>
               </div>
