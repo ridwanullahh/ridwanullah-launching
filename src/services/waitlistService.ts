@@ -98,7 +98,8 @@ class WaitlistService {
   }
 
   private async sendAdminNotification(subscriberEmail: string) {
-    if (!this.sdk?.smtp.endpoint) {
+    const smtpEndpoint = import.meta.env.VITE_SMTP_ENDPOINT;
+    if (!smtpEndpoint) {
       console.log('SMTP not configured, skipping admin notification');
       return;
     }
@@ -136,7 +137,7 @@ class WaitlistService {
         </div>
       `;
 
-      await this.sdk.sendEmail(adminEmail, subject, html);
+      await this.sdk!.sendEmail(adminEmail, subject, html);
     } catch (error) {
       console.error('Failed to send admin notification:', error);
     }
