@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -74,10 +73,16 @@ export default {
 				'minted-glow': '#E9FBF1',
 				'pure-white': '#FFFFFF'
 			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			borderWidth: {
+				'3': '3px',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -131,6 +136,24 @@ export default {
 					'50%': {
 						transform: 'translateY(-10px)'
 					}
+				},
+				'bounce-gentle': {
+					'0%, 100%': {
+						transform: 'translateY(0)',
+						animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+					},
+					'50%': {
+						transform: 'translateY(-5px)',
+						animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+					}
+				},
+				'pulse-slow': {
+					'0%, 100%': {
+						opacity: '0.3'
+					},
+					'50%': {
+						opacity: '0.1'
+					}
 				}
 			},
 			animation: {
@@ -139,7 +162,9 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'fade-in-down': 'fade-in-down 0.6s ease-out',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-				'float': 'float 6s ease-in-out infinite'
+				'float': 'float 6s ease-in-out infinite',
+				'bounce-gentle': 'bounce-gentle 2s infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite'
 			}
 		}
 	},
